@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Text Editor</title>
+</head>
+<body>
+    <h1>Simple Text Editor</h1>
+    <textarea id="editor" rows="10" cols="50"></textarea><br>
+    <button id="saveBtn">Save</button>
+
+    <script>
+        document.getElementById('saveBtn').addEventListener('click', function() {
+            const content = document.getElementById('editor').value;
+
+            // Send content to the server using fetch API or WebSocket here.
+            fetch('http://localhost:8080', {
+                method: 'POST',
+                body: content,
+                headers: {
+                    'Content-Type': 'text/plain'
+                }
+            })
+            .then(response => response.text())
+            .then(data => console.log(data))
+            .catch(error => console.error('Error:', error));
+        });
+    </script>
+</body>
+</html>
