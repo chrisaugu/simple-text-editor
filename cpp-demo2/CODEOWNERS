@@ -1,0 +1,15 @@
+* @gregestren @Wyverald
+
+.bazelci @fweikert
+AUTHORS  @meteorcloudy
+android/ @ahumesky @jin
+bzlmod/ @wyverald
+configurations/ @bazelbuild/configurability
+cpp-tutorial/ @oquenchil
+flags-parsing-tutorial/ @bazelbuild/configurability
+frontend/ @alexeagle
+go-tutorial/ @bazelbuild/go-maintainers
+macros/ @brandjon
+make-variables/ @bazelbuild/configurability
+rules/ @comius
+third-party-dependencies/ @meteorcloudy

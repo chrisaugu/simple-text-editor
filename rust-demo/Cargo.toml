@@ -1,8 +1,12 @@
 [package]
 name = "rust-demo"
 version = "0.1.0"
-edition = "2021"
+edition = "2024"
 
 [dependencies]
 clap = "4.5.42"
 eframe = "0.28" # Use the latest stable version
+rand = "0.8.5"
+trpl = "0.2.0"
+diesel = { version = "2.2.0", features = ["postgres"] }
+dotenvy = "0.15"

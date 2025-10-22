@@ -1,10 +1,13 @@
 #![allow(unreachable_code, unused_labels)]
 
-use crate::my_module::{MyCoolStruct};
+use crate::my_module::MyCoolStruct;
 use clap::Parser;
+use rand::Rng;
+use std::cmp::Ordering;
+use std::io;
 
 /// Search for a pattern in a file and display the lines that contain it.
-#[derive(Parser)]
+// #[derive(Parser)]
 struct Cli {
     /// The pattern to look for
     pattern: String,
@@ -31,7 +34,7 @@ mod my_module;
 
 fn some_function() {}
 
-fn main() {
+fn mainx() {
     println!("Hello, world!");
 
     // let x = some_function().unwrap();
@@ -49,16 +52,16 @@ fn main() {
         }
     };
 
-    let pattern = std::env::args().nth(1).expect("no pattern given");
-    let path = std::env::args().nth(2).expect("no path given");
+    // let pattern = std::env::args().nth(1).expect("no pattern given");
+    // let path = std::env::args().nth(2).expect("no path given");
 
     // let args = Cli {
     //     pattern,
     //     path: std::path::PathBuf::from(path.clone()),
     // };
-    let args = Cli::parse();
+    // let args = Cli::parse();
 
-    println!("pattern: {:?}, path: {:?}", args.pattern, args.path);
+    // println!("pattern: {:?}, path: {:?}", args.pattern, args.path);
 
     // if let Ok(x) = some_function() {
     //     // logic that should only run if you get an OK result back
@@ -147,4 +150,45 @@ fn main() {
     }
 
     println!("Exited the outer loop");
+}
+
+fn main() {
+    println!("Guess the number!");
+
+    let secret_number = rand::thread_rng().gen_range(1..=100);
+
+    println!("The secret number is {secret_number}");
+
+    loop {
+        println!("Please input your guess.");
+
+        let mut guess = String::new();
+        let apples = 5;
+        let mut bananas = 5;
+
+        io::stdin()
+            .read_line(&mut guess)
+            .expect("Failed to read line");
+
+        let guess: u32 = match guess.trim().parse() {
+            Ok(num) => num,
+            Err(_) => continue,
+        };
+        // .expect("Please type a number");
+
+        println!("You guessed: {guess}");
+
+        match guess.cmp(&secret_number) {
+            Ordering::Less => println!("Too small!"),
+            Ordering::Greater => println!("Too big!"),
+            Ordering::Equal => {
+                println!("You win!");
+                break;
+            }
+        }
+    }
+
+    let x = 5;
+    let y = 10;
+    println!("x = {x} and y + 2 = {}", y + 2);
 }
