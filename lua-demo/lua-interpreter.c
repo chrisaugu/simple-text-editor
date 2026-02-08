@@ -18,8 +18,8 @@ int main (void) {
         error = luaL_loadbuffer(L, buff, strlen(buff), "line") ||
                 lua_pcall(L, 0, 0, 0);
         if (error) {
-        fprintf(stderr, "%s", lua_tostring(L, -1));
-        lua_pop(L, 1);  /* pop error message from the stack */
+            fprintf(stderr, "%s", lua_tostring(L, -1));
+            lua_pop(L, 1);  /* pop error message from the stack */
         }
     }
 
